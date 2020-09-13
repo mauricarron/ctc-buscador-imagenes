@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Formulario from "./components/Formulario";
 import axios from "axios";
+import ListaImagen from "./components/ListaImagenes";
 
 function App() {
   const [busqueda, guardarBusqueda] = useState("");
+  const [imagenes, guardarImagenes] = useState([]);
 
   useEffect(() => {
     if (busqueda === "") return;
@@ -16,7 +18,7 @@ function App() {
         `q=${imagenesPorPagina}`;
 
       const respuesta = await axios.get(url);
-      console.log(respuesta.data.hits);
+      guardarImagenes(respuesta.data.hits);
     };
     consultarApi();
   }, [busqueda]);
@@ -25,6 +27,9 @@ function App() {
       <div className="jumbotron">
         <p className="lead text-center">Buscador de Imágenes</p>
         <Formulario guardarBusqueda={guardarBusqueda} />
+      </div>
+      <div className="row justify-content-center">
+        <ListaImagen imagenes={imagenes} />
       </div>
     </div>
   );
