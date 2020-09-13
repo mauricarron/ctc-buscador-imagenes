@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Error from "./Error";
 
-const Formulario = () => {
+const Formulario = ({ guardarBusqueda }) => {
   const [keyword, guardarKeyword] = useState("");
   const [error, guardarError] = useState(false);
 
@@ -12,6 +12,7 @@ const Formulario = () => {
       return;
     }
     guardarError(false);
+    guardarBusqueda(keyword);
   };
 
   return (
