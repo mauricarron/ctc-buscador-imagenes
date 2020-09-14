@@ -13,7 +13,7 @@ Proyecto de aprendizaje realizado en el curso **Desarrollo FrontEnd con React**,
 - Profundiza sobre elementos fundamentales de React
 - Style Components
 - Fetch APIs (Axios)
-- Custom Hooks
+- Implementar Paginador
 - PropTypes
 - Deploy (Netlify)
 
