@@ -30,6 +30,17 @@ function App() {
     consultarApi();
   }, [busqueda]);
 
+  const paginaAnterior = () => {
+    const nuevaPaginaActual = paginaactual - 1;
+    if (paginaactual === 1) return;
+    guardarPaginaActual(nuevaPaginaActual);
+  };
+  const paginaSiguiente = () => {
+    const nuevaPaginaActual = paginaactual + 1;
+    if (nuevaPaginaActual > totalpaginas) return;
+    guardarPaginaActual(nuevaPaginaActual);
+  };
+
   return (
     <div className="container">
       <div className="jumbotron">
@@ -39,6 +50,20 @@ function App() {
       <div className="row justify-content-center">
         <ListaImagen imagenes={imagenes} />
       </div>
+      <button
+        type="button"
+        onClick={paginaAnterior}
+        className="btn btn-success mr-1"
+      >
+        Anterior
+      </button>
+      <button
+        type="button"
+        onClick={paginaSiguiente}
+        className="btn btn-success mr-1"
+      >
+        Siguiente
+      </button>
     </div>
   );
 }
